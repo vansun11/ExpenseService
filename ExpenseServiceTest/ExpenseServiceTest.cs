@@ -46,8 +46,11 @@ namespace Expense.Service.Test
         public void Should_return_other_expense_type_if_project_is_external_and_has_other_name()
         {
             // given
+            Project project = new (ProjectType.EXTERNAL, "Project Unexpected");
             // when
+            ExpenseType expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
             // then
+            Assert.Equal(ExpenseType.OTHER_EXPENSE, expenseType);
         }
 
         [Fact]
